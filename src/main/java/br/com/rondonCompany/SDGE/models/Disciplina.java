@@ -17,6 +17,6 @@ public class Disciplina {
     private Integer cargaHoraria;
 
     @ManyToMany(mappedBy = "listaDisciplinas", cascade = CascadeType.ALL)
-    private Set<Disciplina> listaDisciplinas = new HashSet<>();
+    private List<Professor> listaProfessores = new ArrayList<>();
 
 }

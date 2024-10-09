@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@Table(name = "turmas")
 public class Turma {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

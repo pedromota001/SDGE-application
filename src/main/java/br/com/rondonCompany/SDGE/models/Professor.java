@@ -32,5 +32,5 @@ public class Professor {
             joinColumns = @JoinColumn(name = "id_professor"),
             inverseJoinColumns = @JoinColumn(name = "id_disciplina")
     )
-    private Set<Disciplina> listaDisciplinas = new HashSet<>();
+    private List<Disciplina> listaDisciplinas = new ArrayList<>();
 }
