@@ -1,0 +1,9 @@
+<svg width="300" height="150" xmlns="http://www.w3.org/2000/svg">
+    <!-- Círculo representando o logo -->
+    <circle cx="50" cy="75" r="40" fill="none" stroke="#1C3D5A" stroke-width="5" />
+
+    <!-- Texto "EduTech" com a cor correspondente -->
+    <text x="120" y="90" font-family="Arial, sans-serif" font-size="40" fill="#1C3D5A" font-weight="bold">
+        EduTech
+    </text>
+</svg>
