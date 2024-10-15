@@ -1,14 +1,23 @@
 package br.com.rondonCompany.SDGE.controller;
 
+import br.com.rondonCompany.SDGE.dto.AlunoDTO;
+import br.com.rondonCompany.SDGE.service.AlunoService;
+import br.com.rondonCompany.SDGE.service.TurmaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
+@RequestMapping("/aluno")
 public class AlunoController {
 
-    @GetMapping("/cadastrar-alunos")
-    public String cadastrarAluno() {
-        return "cadastrar-aluno"; //html referente ao cadastro de alunos
+    @Autowired
+    private AlunoService alunoService;
 
+    @GetMapping("/alunoCadastro")
+    public AlunoDTO cadastrarAluno() {
+        return null; //html referente ao cadastro de alunos
     }
 }
