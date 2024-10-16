@@ -4,9 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro | Aluno</title>
-    <link rel="stylesheet" href="alunoLogin.css">
+    <link rel="stylesheet" href="alunoCadastro.css">
 </head>
 <body>
-    <h1>teste</h1>
+<div id="voltar">
+    <a href="alunoLogin.html">
+        <img src="images/setaVoltar.svg" id="setaVoltar">
+    </a>
+</div>
+<div class="container">
+    <div class="container" id="cadastro">
+        <div id="inicio">
+            <h1>Cadastro do Aluno</h1>
+        </div>
+        <form id="forms">
+            <div>
+                <p>Nome:</p>
+                <input class="inputText" type="text" placeholder="Insira seu nome" required>
+                <p>Data de Nascimento:</p>
+                <input class="inputText" type="text" placeholder="Insira sua data de nascimento" required>
+                <p>Endereço:</p>
+                <input class="inputText" type="text" placeholder="Insira seu endereço" required>
+            </div>
+            <div>
+                <p>Telefone:</p>
+                <input class="inputText" type="text" placeholder="Insira seu telefone" required>
+                <p>Email:</p>
+                <input class="inputText" type="email" placeholder="Insira seu email" required>
+                <p>Senha:</p>
+                <input class="inputText" type="password" placeholder="Insira sua senha" required>
+            </div>
+        </form>
+        <div>
+            <button id="button" type="button" onclick="validarFormulario()">Avançar</button>
+        </div>
+        <div id="mensagemSucesso">Cadastro realizado com sucesso!</div>
+    </div>
+</div>
+
+<script>
+    function validarFormulario() {
+        const form = document.getElementById('forms');
+        const mensagemSucesso = document.getElementById('mensagemSucesso');
+
+        if (form.checkValidity()) {
+            mensagemSucesso.style.display = 'block';
+
+            setTimeout(() => {
+                window.location.href = "alunoLogin.html";
+            }, 2000);
+        } else {
+            form.reportValidity();
+        }
+    }
+</script>
 </body>
 </html>

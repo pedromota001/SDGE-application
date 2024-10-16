@@ -15,18 +15,17 @@
 <div class="container">
     <div class="container" id="login">
         <div id="inicio">
-            <p>Bem vindo!</p>
+            <p>Área do Aluno</p>
             <h1>Login</h1>
         </div>
-        <div id="forms">
+        <form id="forms">
             <p>Email:</p>
-            <input class="inputText" type="text" placeholder="Insira seu nome">
+            <input class="inputText" type="email" placeholder="Insira seu email" required>
             <p>Senha:</p>
-            <input class="inputText" type="text" placeholder="Insira sua senha">
-
-        </div>
-        <div id="button">
-            <a href="">Avançar</a>
+            <input class="inputText" type="password" placeholder="Insira sua senha" required>
+        </form>
+        <div>
+            <button id="button" type="button" onclick="validarFormulario()">Avançar</button>
         </div>
         <div id="cadastro">
             <a>Para se cadastrar</a>
@@ -34,5 +33,18 @@
         </div>
     </div>
 </div>
+
+<script>
+    function validarFormulario() {
+        const form = document.getElementById('forms');
+
+        if (form.checkValidity()) {
+            window.location.href = "";
+        } else {
+            form.reportValidity();
+        }
+    }
+</script>
+
 </body>
 </html>

@@ -19,9 +19,9 @@ body{
     height: 100vh;
 }
 
-#login{
-    width: 400px;
-    height: 480px;
+#cadastro{
+    width: 700px;
+    height: 550px;
     border: 3px solid rgba(255, 255, 255, 0.835);
     border-radius: 30px;
     color: rgba(255, 255, 255, 0.835);
@@ -29,18 +29,22 @@ body{
     margin-bottom: 10%;
 }
 
-#inicio p{
+#inicio{
     text-align: center;
+}
+
+#inicio p{
     font-size: 20px;
 }
 
-#inicio h1{
-    text-align: center;
+#forms{
+    display: flex;
+    flex-direction: row;
+    gap: 10%;
+    justify-content: center;
 }
 
-#forms{
-    width: 250px;
-}
+
 
 #forms p{
     margin-bottom: 8px;
@@ -81,17 +85,6 @@ body{
     background-color: rgb(0,0,0,0.3);
 }
 
-#cadastro {
-    margin-top: 15px;
-    font-size: 15px;
-    color: rgba(255, 255, 255, 0.835);
-}
-
-#linkCadastro{
-    text-decoration: underline;
-    color: rgba(255, 255, 255, 0.835);
-
-}
 #voltar {
     display: flex;
     flex-direction: column;
@@ -104,4 +97,11 @@ body{
 
 #setaVoltar{
     cursor: pointer;
+}
+#mensagemSucesso {
+    display: none;
+    color: green;
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: center;
 }
