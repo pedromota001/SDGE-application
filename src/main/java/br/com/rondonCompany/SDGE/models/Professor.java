@@ -22,11 +22,12 @@ public class Professor {
     private String especialidade;
     private String telefone;
     private String email;
+    private String senha;
 
     @ManyToMany(mappedBy = "listaProfessores", cascade = CascadeType.ALL)
     private List<Turma> listaTurmas = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "professor_disciplina",
             joinColumns = @JoinColumn(name = "id_professor"),

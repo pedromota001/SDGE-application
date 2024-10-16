@@ -21,7 +21,7 @@ public class Turma {
     @OneToMany(mappedBy = "turma", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Aluno> listaAlunos = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "professores_turma",
             joinColumns = @JoinColumn(name = "id_turma"),
