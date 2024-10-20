@@ -1,7 +1,7 @@
 package br.com.rondonCompany.SDGE.service;
 
 
-import br.com.rondonCompany.SDGE.models.Turma;
+import br.com.rondonCompany.SDGE.entity.Turma;
 import br.com.rondonCompany.SDGE.repository.ITurmaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

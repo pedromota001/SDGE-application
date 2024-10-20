@@ -1,20 +1,54 @@
 package br.com.rondonCompany.SDGE.controller;
 
-import br.com.rondonCompany.SDGE.dto.AlunoDTO;
-import br.com.rondonCompany.SDGE.service.AlunoService;
+import br.com.rondonCompany.SDGE.entity.Aluno;
+import br.com.rondonCompany.SDGE.service.aluno.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
+@RequestMapping("/alunos")
 public class AlunoController {
 
-    @Autowired
     private AlunoService alunoService;
 
-    @GetMapping("/alunoCadastro")
-    public AlunoDTO cadastrarAluno() {
-        return null; //html referente ao cadastro de alunos
+    @Autowired
+    public AlunoController(AlunoService theAlunoService){
+        alunoService = theAlunoService;
     }
+
+    @GetMapping("/index")
+    public String alunoIndex(){
+        return "index";
+    }
+
+
+    @GetMapping("/showAlunoLoginForm")
+    public String loginAluno(Model theModel){
+        //cria novo aluno e faz o binding com os dados do form
+        Aluno theAluno = new Aluno();
+
+        theModel.addAttribute("aluno", theAluno);
+
+        return "alunos/aluno-login-form";
+    }
+
+    @GetMapping("/showAlunoCadastroForm")
+    public String cadastroAluno(Model theModel){
+        Aluno theAluno = new Aluno();
+        theModel.addAttribute("aluno", theAluno);
+        return "alunos/aluno-cadastro-form";
+    }
+
+    @PostMapping("/save")
+    public String saveAluno(@ModelAttribute("aluno") Aluno theAluno){
+        //salvar o aluno
+        alunoService.save(theAluno);
+
+        //retorna para pg inicial de alunos
+        return "redirect:/alunos/index";
+    }
+
+
 }

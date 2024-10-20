@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Cadastro | Aluno</title>
+    <link rel="stylesheet" href="alunoCadastro.css">
+</head>
+<body>
+<div id="voltar">
+    <a href="aluno-login-form.html">
+        <img src="../images/setaVoltar.svg" id="setaVoltar">
+    </a>
+</div>
+<div class="container">
+    <div class="container" id="cadastro">
+        <div id="inicio">
+            <h1>Cadastro do Aluno</h1>
+        </div>
+        <form id="forms" action="#" th:action="@{/alunos/save}"
+              th:object="${aluno}" th:method="POST" >
+
+            <div>
+                <p>Nome:</p>
+
+                <input class="inputText" type="text" th:field="*{nome}"
+                       placeholder="Insira seu nome" required>
+
+                <p>Data de Nascimento:</p>
+
+                <input class="inputText" type="date" th:field="*{dataNascimento}"
+                       placeholder="Insira sua data de nascimento" required>
+
+                <p>Endereço:</p>
+
+                <input class="inputText" type="text" th:field="*{endereco}"
+                       placeholder="Insira seu endereço" required>
+
+            </div>
+            <div>
+                <p>Telefone:</p>
+
+                <input class="inputText" type="text" th:field="*{telefone}"
+                       placeholder="Insira seu telefone" required>
+
+                <p>Email:</p>
+
+                <input class="inputText" type="email" th:field="*{email}"
+                       placeholder="Insira seu email" required>
+
+                <p>Senha:</p>
+
+                <input class="inputText" type="password" th:field="*{senha}"
+                       placeholder="Insira sua senha" required>
+
+            </div>
+
+            <div>
+                <button id="button" type="submit">Avançar</button>
+            </div>
+
+        </form>
+
+        <div id="mensagemSucesso">Cadastro realizado com sucesso!</div>
+    </div>
+</div>
+
+<script>
+    function validarFormulario() {
+        const form = document.getElementById('forms');
+        const mensagemSucesso = document.getElementById('mensagemSucesso');
+
+        if (form.checkValidity()) {
+            mensagemSucesso.style.display = 'block';
+
+            setTimeout(() => {
+                window.location.href = "aluno-login-form.html";
+            }, 2000);
+        } else {
+            form.reportValidity();
+        }
+    }
+</script>
+</body>
+</html>

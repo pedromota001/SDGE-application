@@ -1,4 +1,4 @@
-package br.com.rondonCompany.SDGE.models;
+package br.com.rondonCompany.SDGE.entity;
 
 import jakarta.persistence.*;
 
