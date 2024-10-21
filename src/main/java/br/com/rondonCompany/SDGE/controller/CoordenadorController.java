@@ -43,7 +43,7 @@ public class CoordenadorController {
 
     @GetMapping("/showGerenciaTurma")
     public String GerenciaTurmaCoordenador(){
-        return "coordenadores/gerencia-turma";
+        return "coordenadores/gerenciar-turma";
     }
 
     @GetMapping("/gerencia-turma/{id}")
@@ -54,7 +54,7 @@ public class CoordenadorController {
         }
         else{
             theModel.addAttribute("error", "Turma inexistente no sistema, tenta novamente");
-            return "coordenadores/gerencia-turma";
+            return "coordenadores/gerenciar-turma";
         }
     }
 }
