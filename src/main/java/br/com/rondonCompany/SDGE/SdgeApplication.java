@@ -9,5 +9,4 @@ public class SdgeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SdgeApplication.class, args);
 	}
-
 }
