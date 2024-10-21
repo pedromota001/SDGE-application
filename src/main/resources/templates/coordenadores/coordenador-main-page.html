@@ -76,11 +76,15 @@
     function gerenciarTurmas(){
         telaInicial.style = "display: none"
         gerenciarTurma.style = "display: flex"
+
+        history.pushState(null, '', '/coordenadores/coordenador-main-page/gerenciamento-turmas');
     }
 
     function aparecerTelaInicial(){
         telaInicial.style = "display: flex"
         gerenciarTurma.style = "display: none"
+
+        history.pushState(null, '', '/coordenadores/coordenador-main-page');
     }
 </script>
 </body>

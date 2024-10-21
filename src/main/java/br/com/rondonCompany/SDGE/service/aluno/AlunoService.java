@@ -41,7 +41,7 @@ public class AlunoService {
 
     public String verificaAlunoNoBanco(Optional<Aluno> aluno, Aluno theAluno, Model theModel){
         if(aluno.isPresent() && aluno.get().getSenha().equals(theAluno.getSenha())){
-            return "alunos/aluno-main-page";
+            return "redirect:/alunos/aluno-main-page";
         } else {
             theModel.addAttribute("error", "Email ou senha invalidos. Tente Novamente");
             return "alunos/aluno-login-form";
