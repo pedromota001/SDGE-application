@@ -56,10 +56,11 @@ public class CoordenadorController {
         return "coordenadores/gerenciar-turma";
     }
 
-    @GetMapping("/coordenador-main-page/{id}")
+    @GetMapping("/coordenador-main-page/gerenciamento-turmas/{id}")
     public String mostraTurmas(@PathVariable Long id, Model theModel){
         List<AlunoDTO> alunosTurma = alunoService.findByTurma_Id(id);
+        alunosTurma.forEach(System.out::println);
         theModel.addAttribute("aluno", alunosTurma);
-        return "redirect:/coordenadores/coordenador-main-page";
+        return "coordenadores/coordenador-main-page";
     }
 }
