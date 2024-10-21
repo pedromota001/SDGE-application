@@ -27,29 +27,29 @@ public class CoordenadorController {
     public String loginCoordenador(Model theModel){
         Professor professor = new Professor();
         theModel.addAttribute("coordenador", professor);
-        return "coordenador/coordenador-login-form";
+        return "coordenadores/coordenador-login-form";
     }
 
     @PostMapping("/validate")
     public String validateCoordenadorLogin(@ModelAttribute("coordenador") Professor professor, Model theModel){
         Optional<Professor> professorExistente = professorService.buscaPorEmail(professor.getEmail());
         if(professorExistente.isPresent() && professorExistente.get().getSenha().equalsIgnoreCase(professor.getSenha())){
-            return "coordenador/coordenadores-main-page";
+            return "coordenadores/coordenador-main-page";
         }
         else{
             theModel.addAttribute("error", "Email ou senha invalidos, tente novamente");
-            return "coordenador/coordenador-login-form";
+            return "coordenadores/coordenador-login-form";
         }
     }
 
-    @GetMapping("/showCoordenador-main-page")
+    @GetMapping("/showCoordenadorMainPage")
     public String mainPageCoordenador(){
-        return "coordenador/coordenador-main-page";
+        return "coordenadores/coordenador-main-page";
     }
 
     @GetMapping("/showGerenciaTurma")
     public String GerenciaTurmaCoordenador(){
-        return "coordenador/gerencia-turma";
+        return "coordenadores/gerencia-turma";
     }
 
     @GetMapping("/gerencia-turma/{id}")
@@ -60,7 +60,7 @@ public class CoordenadorController {
         }
         else{
             theModel.addAttribute("error", "Turma inexistente no sistema, tenta novamente");
-            return "coordenador/gerencia-turma";
+            return "coordenadores/gerencia-turma";
         }
     }
 }
