@@ -52,18 +52,7 @@ public class AlunoController {
 
     @PostMapping("/validate")
     public String validateAlunoLogin(@ModelAttribute("aluno") Aluno theAluno, Model theModel){
-
-        //implementar logica para verificar se um aluno ja esta no banco de dados
-
-        //buscar aluno pelo email:
         Optional<Aluno> alunoExistente = alunoService.findByEmail(theAluno.getEmail());
-
-        //verificar se aluno esta presente e senha esta correta
-        if(alunoExistente.isPresent() && alunoExistente.get().getSenha().equals(theAluno.getSenha())){
-            return "alunos/aluno-main-page";
-        } else {
-            theModel.addAttribute("error", "Email ou senha invalidos. Tente Novamente");
-            return "alunos/aluno-login-form";
-        }
+        return alunoService.verificaAlunoNoBanco(alunoExistente, theAluno, theModel);
     }
 }

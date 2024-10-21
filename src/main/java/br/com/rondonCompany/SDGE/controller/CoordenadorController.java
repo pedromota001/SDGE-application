@@ -33,13 +33,7 @@ public class CoordenadorController {
     @PostMapping("/validate")
     public String validateCoordenadorLogin(@ModelAttribute("coordenador") Professor professor, Model theModel){
         Optional<Professor> professorExistente = professorService.buscaPorEmail(professor.getEmail());
-        if(professorExistente.isPresent() && professorExistente.get().getSenha().equalsIgnoreCase(professor.getSenha()) && professorExistente.get().isCoordenador()){
-            return "coordenadores/coordenador-main-page";
-        }
-        else{
-            theModel.addAttribute("error", "Email ou senha invalidos, tente novamente");
-            return "coordenadores/coordenador-login-form";
-        }
+        return professorService.verificaCoordenador(professorExistente, theModel);
     }
 
     @GetMapping("/showCoordenadorMainPage")

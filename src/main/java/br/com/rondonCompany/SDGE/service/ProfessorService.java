@@ -5,6 +5,7 @@ import br.com.rondonCompany.SDGE.entity.Turma;
 import br.com.rondonCompany.SDGE.repository.IProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.Optional;
 
@@ -23,5 +24,15 @@ public class ProfessorService {
 
     public Optional<Turma> buscaTurma(Long id) {
         return professorRepository.buscaTurmaId(id);
+    }
+
+    public String verificaCoordenador(Optional<Professor> professor, Model theModel){
+        if(professor.isPresent() && professor.get().getSenha().equalsIgnoreCase(professor.get().getSenha()) && professor.get().isCoordenador()){
+            return "coordenadores/coordenador-main-page";
+        }
+        else{
+            theModel.addAttribute("error", "Email ou senha invalidos, tente novamente");
+            return "coordenadores/coordenador-login-form";
+        }
     }
 }
