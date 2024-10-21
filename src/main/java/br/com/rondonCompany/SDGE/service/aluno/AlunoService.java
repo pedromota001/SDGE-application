@@ -6,6 +6,8 @@ import br.com.rondonCompany.SDGE.repository.IAlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AlunoService {
     private IAlunoRepository alunoRepository;
@@ -17,5 +19,9 @@ public class AlunoService {
 
     public void save(Aluno theAluno) {
         alunoRepository.save(theAluno);
+    }
+
+    public Optional<Aluno> findByEmail(String email) {
+        return alunoRepository.findByEmail(email);
     }
 }

@@ -21,7 +21,12 @@
             <h1>Login</h1>
         </div>
 
-        <form id="forms" action ="#" th:action="@{/alunos/save}"
+        <!-- Bloco para exibir mensagens de erro, se existirem -->
+        <div th:if="${error}" class="alert alert-danger" role="alert">
+            <p th:text="${error}"></p>
+        </div>
+
+        <form id="forms" action ="#" th:action="@{/alunos/validate}"
               th:object="${aluno}" th:method="POST">
 
             <p>Email:</p>

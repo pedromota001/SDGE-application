@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @Controller
 @RequestMapping("/alunos")
 public class AlunoController {
@@ -28,9 +30,7 @@ public class AlunoController {
     public String loginAluno(Model theModel){
         //cria novo aluno e faz o binding com os dados do form
         Aluno theAluno = new Aluno();
-
         theModel.addAttribute("aluno", theAluno);
-
         return "alunos/aluno-login-form";
     }
 
@@ -46,9 +46,24 @@ public class AlunoController {
         //salvar o aluno
         alunoService.save(theAluno);
 
-        //retorna para pg inicial de alunos
-        return "redirect:/alunos/index";
+        //retorna para pg de login
+        return "redirect:/alunos/showAlunoLoginForm";
     }
 
+    @PostMapping("/validate")
+    public String validateAlunoLogin(@ModelAttribute("aluno") Aluno theAluno, Model theModel){
 
+        //implementar logica para verificar se um aluno ja esta no banco de dados
+
+        //buscar aluno pelo email:
+        Optional<Aluno> alunoExistente = alunoService.findByEmail(theAluno.getEmail());
+
+        //verificar se aluno esta presente e senha esta correta
+        if(alunoExistente.isPresent() && alunoExistente.get().getSenha().equals(theAluno.getSenha())){
+            return "alunos/aluno-main-page";
+        } else {
+            theModel.addAttribute("error", "Email ou senha invalidos. Tente Novamente");
+            return "alunos/aluno-login-form";
+        }
+    }
 }
