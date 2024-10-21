@@ -13,28 +13,20 @@ import lombok.Setter;
 public class Aluno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
     private Long id;
 
-    @Column(name="data_matricula")
     private String dataMatricula;
 
-    @Column(name="nome")
     private String nome;
 
-    @Column(name="data_nascimento")
     private String dataNascimento;
 
-    @Column(name="endereco")
     private String endereco;
 
-    @Column(name="telefone")
     private String telefone;
 
-    @Column(name="email")
     private String email;
 
-    @Column(name="senha")
     private String senha;
 
     @ManyToOne

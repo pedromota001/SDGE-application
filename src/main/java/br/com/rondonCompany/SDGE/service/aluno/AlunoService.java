@@ -15,7 +15,7 @@ public class AlunoService {
         alunoRepository = theAlunoRepository;
     }
 
-    public Aluno save(Aluno theAluno) {
-        return alunoRepository.save(theAluno);
+    public void save(Aluno theAluno) {
+        alunoRepository.save(theAluno);
     }
 }
