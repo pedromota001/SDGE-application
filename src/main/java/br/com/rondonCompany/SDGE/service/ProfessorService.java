@@ -1,5 +1,6 @@
 package br.com.rondonCompany.SDGE.service;
 
+import br.com.rondonCompany.SDGE.dto.AlunoDTO;
 import br.com.rondonCompany.SDGE.entity.Aluno;
 import br.com.rondonCompany.SDGE.entity.Professor;
 import br.com.rondonCompany.SDGE.entity.Turma;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,8 +29,8 @@ public class ProfessorService {
         return professorRepository.buscaTurmaId(id);
     }
 
-    public Optional<Aluno> buscaAluno() {
-        return professorRepository.buscaAluno();
+    public List<AlunoDTO> buscaAluno() {
+        return professorRepository.buscaAlunos();
     }
 
     public String verificaCoordenador(Optional<Professor> professor, Model theModel){

@@ -1,10 +1,12 @@
 package br.com.rondonCompany.SDGE.controller;
 
 
+import br.com.rondonCompany.SDGE.dto.AlunoDTO;
 import br.com.rondonCompany.SDGE.entity.Aluno;
 import br.com.rondonCompany.SDGE.entity.Professor;
 import br.com.rondonCompany.SDGE.entity.Turma;
 import br.com.rondonCompany.SDGE.service.ProfessorService;
+import br.com.rondonCompany.SDGE.service.aluno.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,10 +20,12 @@ import java.util.Optional;
 public class CoordenadorController {
 
     private ProfessorService professorService;
+    private AlunoService alunoService;
 
     @Autowired
-    public CoordenadorController(ProfessorService professorService) {
+    public CoordenadorController(ProfessorService professorService, AlunoService alunoService) {
         this.professorService = professorService;
+        this.alunoService = alunoService;
     }
 
     @GetMapping("/showCoordenadorLoginForm")
@@ -40,7 +44,7 @@ public class CoordenadorController {
     @GetMapping("/showCoordenadorMainPage")
     public String mainPageCoordenador(Model theModel){
 
-        Optional<Aluno> theAlunos = professorService.buscaAluno();
+        List<AlunoDTO> theAlunos = alunoService.findAll();
 
         theModel.addAttribute("aluno", theAlunos);
 

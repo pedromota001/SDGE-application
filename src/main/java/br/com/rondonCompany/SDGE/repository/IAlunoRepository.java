@@ -9,5 +9,4 @@ import java.util.Optional;
 public interface IAlunoRepository extends JpaRepository<Aluno, Long> {
     Optional<Aluno> findByEmail(String email);
 
-    List<Aluno> findAll();
 }
