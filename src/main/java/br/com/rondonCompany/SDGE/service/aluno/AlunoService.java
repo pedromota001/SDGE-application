@@ -34,6 +34,10 @@ public class AlunoService {
         List<Aluno> listaAlunos = alunoRepository.findAll();
         return converteDados(listaAlunos);
     }
+    public List<AlunoDTO> findByTurma_Id(Long id){
+        List<Aluno> list = alunoRepository.findByTurma_Id(id);
+        return converteDados(list);
+    }
 
     public String verificaAlunoNoBanco(Optional<Aluno> aluno, Aluno theAluno, Model theModel){
         if(aluno.isPresent() && aluno.get().getSenha().equals(theAluno.getSenha())){

@@ -56,15 +56,10 @@ public class CoordenadorController {
         return "coordenadores/gerenciar-turma";
     }
 
-    @GetMapping("/gerencia-turma/{id}")
+    @GetMapping("/coordenador-main-page/{id}")
     public String mostraTurmas(@PathVariable Long id, Model theModel){
-        Optional<Turma> turmaExiste = professorService.buscaTurma(id);
-        if(turmaExiste.isPresent()){
-            return " ";//implementar
-        }
-        else{
-            theModel.addAttribute("error", "Turma inexistente no sistema, tenta novamente");
-            return "coordenadores/gerenciar-turma";
-        }
+        List<AlunoDTO> alunosTurma = alunoService.findByTurma_Id(id);
+        theModel.addAttribute("aluno", alunosTurma);
+        return "redirect:/coordenadores/coordenador-main-page";
     }
 }
