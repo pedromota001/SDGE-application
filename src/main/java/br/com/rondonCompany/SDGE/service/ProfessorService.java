@@ -18,7 +18,7 @@ public class ProfessorService {
     }
 
     public Optional<Professor> buscaPorEmail(String email) {
-        return professorRepository.findByEmail();
+        return professorRepository.findByEmail(email);
     }
 
     public Optional<Turma> buscaTurma(Long id) {

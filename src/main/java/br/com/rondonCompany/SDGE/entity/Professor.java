@@ -16,7 +16,10 @@ public class Professor {
     private String nome;
     private String especialidade;
     private String telefone;
+
+    @Column(unique = true)
     private String email;
+
     private String senha;
     private boolean coordenador;
 
