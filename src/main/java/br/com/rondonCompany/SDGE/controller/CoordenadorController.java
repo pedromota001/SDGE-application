@@ -41,7 +41,7 @@ public class CoordenadorController {
         return professorService.verificaCoordenador(professorExistente, theModel);
     }
 
-    @GetMapping("/showCoordenadorMainPage")
+    @GetMapping("/coordenador-main-page")
     public String mainPageCoordenador(Model theModel){
 
         List<AlunoDTO> theAlunos = alunoService.findAll();

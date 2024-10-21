@@ -35,7 +35,7 @@ public class ProfessorService {
 
     public String verificaCoordenador(Optional<Professor> professor, Model theModel){
         if(professor.isPresent() && professor.get().getSenha().equalsIgnoreCase(professor.get().getSenha()) && professor.get().isCoordenador()){
-            return "coordenadores/coordenador-main-page";
+            return "redirect:/coordenadores/coordenador-main-page";
         }
         else{
             theModel.addAttribute("error", "Email ou senha invalidos, tente novamente");
