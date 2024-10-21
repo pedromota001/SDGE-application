@@ -1,6 +1,7 @@
 package br.com.rondonCompany.SDGE.controller;
 
 
+import br.com.rondonCompany.SDGE.entity.Aluno;
 import br.com.rondonCompany.SDGE.entity.Professor;
 import br.com.rondonCompany.SDGE.entity.Turma;
 import br.com.rondonCompany.SDGE.service.ProfessorService;
@@ -37,7 +38,12 @@ public class CoordenadorController {
     }
 
     @GetMapping("/showCoordenadorMainPage")
-    public String mainPageCoordenador(){
+    public String mainPageCoordenador(Model theModel){
+
+        Optional<Aluno> theAlunos = professorService.buscaAluno();
+
+        theModel.addAttribute("aluno", theAlunos);
+
         return "coordenadores/coordenador-main-page";
     }
 

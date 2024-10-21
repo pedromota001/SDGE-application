@@ -37,6 +37,25 @@
     <div id="gerenciarTurma">
         <a th:href="@{/coordenadores/showGerenciaTurma}"
            id="buttonCadastroProf">Adicionar Professor</a>
+
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+            <tr>
+                <th>First Name</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="tempAluno : ${aluno}">
+
+                <td th:text="${tempAluno.nome}" />
+                <td th:text="${tempAluno.email}" />
+
+            </tr>
+            </tbody>
+        </table>
+
     </div>
 
 </div>

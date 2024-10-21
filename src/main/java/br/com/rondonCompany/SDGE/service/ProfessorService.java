@@ -1,5 +1,6 @@
 package br.com.rondonCompany.SDGE.service;
 
+import br.com.rondonCompany.SDGE.entity.Aluno;
 import br.com.rondonCompany.SDGE.entity.Professor;
 import br.com.rondonCompany.SDGE.entity.Turma;
 import br.com.rondonCompany.SDGE.repository.IProfessorRepository;
@@ -24,6 +25,10 @@ public class ProfessorService {
 
     public Optional<Turma> buscaTurma(Long id) {
         return professorRepository.buscaTurmaId(id);
+    }
+
+    public Optional<Aluno> buscaAluno() {
+        return professorRepository.buscaAluno();
     }
 
     public String verificaCoordenador(Optional<Professor> professor, Model theModel){
