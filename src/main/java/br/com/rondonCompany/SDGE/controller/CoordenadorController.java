@@ -52,7 +52,7 @@ public class CoordenadorController {
         return "coordenadores/coordenador-main-page";
     }
 
-    @GetMapping("/showGerenciaTurma")
+    @GetMapping("/addProfessorForm")
     public String GerenciaTurmaCoordenador(){
         return "coordenadores/atribuir-professor";
     }
