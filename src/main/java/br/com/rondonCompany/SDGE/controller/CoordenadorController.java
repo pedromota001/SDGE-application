@@ -8,6 +8,7 @@ import br.com.rondonCompany.SDGE.entity.Turma;
 import br.com.rondonCompany.SDGE.service.ProfessorService;
 import br.com.rondonCompany.SDGE.service.aluno.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -53,14 +54,24 @@ public class CoordenadorController {
 
     @GetMapping("/showGerenciaTurma")
     public String GerenciaTurmaCoordenador(){
-        return "coordenadores/gerenciar-turma";
+        return "coordenadores/atribuir-professor";
     }
 
-    @GetMapping("/coordenador-main-page/gerenciamento-turmas/{id}")
+    /*@GetMapping("/coordenador-main-page/gerenciamento-turmas/{id}")
     public String mostraTurmas(@PathVariable Long id, Model theModel){
         List<AlunoDTO> alunosTurma = alunoService.findByTurma_Id(id);
         alunosTurma.forEach(System.out::println);
         theModel.addAttribute("aluno", alunosTurma);
         return "coordenadores/coordenador-main-page";
+    }*/
+
+    @GetMapping("/mostrarTurma")
+    public String mostraTurma(Model theModel){
+
+        List<AlunoDTO> theAlunos = alunoService.findAll();
+
+        theModel.addAttribute("aluno", theAlunos);
+
+        return "coordenadores/mostrar-turma";
     }
 }
