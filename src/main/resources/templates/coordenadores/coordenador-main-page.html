@@ -25,7 +25,7 @@
         </div>
 
         <div class="button" id="buttonGerenciarTurmas" onclick="gerenciarTurmas()">
-            <a id="buttonTurma">Gerenciar turmas</a>
+            <a href="mostrarTurma.html" id="buttonTurma">Gerenciar turmas</a>
         </div>
 
     </div>
@@ -34,25 +34,6 @@
         <h1>Área do Coordenador</h1>
     </div>
 
-    <div id="gerenciarTurma">
-        <a th:href="@{/coordenadores/showGerenciaTurma}"
-           id="buttonCadastroProf">Adicionar Professor</a>
-
-        <table class="table table-bordered table-striped" id="tabelaAlunos">
-            <thead class="table-dark">
-            <tr>
-                <th>First Name</th>
-                <th>Email</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="tempAluno : ${aluno}">
-                <td th:text="${tempAluno.nome}"></td>
-                <td th:text="${tempAluno.email}"></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
 </div>
 <script>
     var buttonMenu = window.document.getElementById("buttonMenu")
@@ -67,30 +48,6 @@
         menu.style = "display:none"
         buttonMenu.style = "display:flex"
     }
-
-    function gerenciarTurmas(turmaId) {
-        telaInicial.style = "display: none";
-        gerenciarTurma.style = "display: flex";
-
-        history.pushState(null, '', `/coordenadores/coordenador-main-page/gerenciamento-turmas/${turmaId}`);
-
-        fetch(`/coordenadores/coordenador-main-page/gerenciamento-turmas/${turmaId}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Erro ao carregar os dados');
-                }
-                return response.text(); // Espera receber HTML
-            })
-            .then(data => {
-                // Atualiza a tabela com os dados recebidos
-                document.getElementById('tabelaAlunos').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Erro:', error);
-                alert('Erro ao carregar os dados da turma');
-            });
-    }
-
 
     function aparecerTelaInicial(){
         telaInicial.style = "display: flex"

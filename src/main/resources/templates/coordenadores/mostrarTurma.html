@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Turma</title>
+    <link rel="stylesheet" href="../../static/mostrarTurma.css" />
+</head>
+<body>
+<div>
+    <div>
+
+    </div>
+    <div id="gerenciarTurma">
+        <a href="gerenciar-turma.html"
+           id="buttonCadastroProf">Adicionar Professor</a>
+    </div>
+    <div>
+        <table class="table table-bordered table-striped" id="tabelaAlunos">
+            <thead class="table-dark">
+            <tr>
+                <th>First Name</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="tempAluno : ${aluno}">
+                <td th:text="${tempAluno.nome}"></td>
+                <td th:text="${tempAluno.email}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
