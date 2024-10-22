@@ -43,12 +43,7 @@ public class CoordenadorController {
     }
 
     @GetMapping("/coordenador-main-page")
-    public String mainPageCoordenador(Model theModel){
-
-        List<AlunoDTO> theAlunos = alunoService.findAll();
-
-        theModel.addAttribute("aluno", theAlunos);
-
+    public String mainPageCoordenador(){
         return "coordenadores/coordenador-main-page";
     }
 
@@ -73,5 +68,10 @@ public class CoordenadorController {
         theModel.addAttribute("aluno", theAlunos);
 
         return "coordenadores/mostrar-turma";
+    }
+
+    @GetMapping("/showProfessorForm")
+    public String showProfessorForm(){
+        return "coordenadores/atribuir-professor";
     }
 }
