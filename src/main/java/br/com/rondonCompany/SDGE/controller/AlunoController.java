@@ -55,4 +55,9 @@ public class AlunoController {
         Optional<Aluno> alunoExistente = alunoService.findByEmail(theAluno.getEmail());
         return alunoService.verificaAlunoNoBanco(alunoExistente, theAluno, theModel);
     }
+
+    @GetMapping("/aluno-main-page")
+    public String showAlunoMainPage(){
+        return "alunos/aluno-main-page";
+    }
 }
