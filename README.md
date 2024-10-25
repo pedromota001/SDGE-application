@@ -58,6 +58,7 @@ https://www.canva.com/design/DAGN2cocGyk/ZpRpbpYGyQWq_C7VZfnUMw/edit?utm_content
 ![image](https://github.com/user-attachments/assets/a7eda72f-e6b9-4829-82a3-cc1ea5e85329)
 
 ## Screencast do Protótipo
+https://drive.google.com/drive/folders/15iAZ3vFsfIBTGjgcHFkmqPgxdoMyHQzT?hl=pt-br
 
 ## Acesso ao Jira
 https://pedromota.atlassian.net/jira/software/projects/SCRUM/boards/1
