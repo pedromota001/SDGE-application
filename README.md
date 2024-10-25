@@ -5,25 +5,25 @@
 Esse Projeto é referente a disciplina de Analise e Projeto de Software da UNICAP, ministrada pelo professor Lucas Rodolfo Celestino de Farias
 
 ## Grupo
-Maria Clara C Soares;
+Gustavo Porto;
 
-Pedro Mota;
+Igor Carvalheira;
+
+Lucas Gurgel;
+
+Luís Gustavo Sampaio;
+
+Marco Antonio;
+
+Maria Clara C Soares;
 
 Miguel Procópio;
 
 Pedro Macedo;
 
+Pedro Mota;
+
 Rondon Guilherme;
-
-Lucas Gurgel;
-
-Gustavo Porto;
-
-Luís Gustavo Sampaio;
-
-Igor Carvalheira;
-
-Marco Antonio;
 
 Thiago Araujo.
 
