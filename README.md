@@ -50,7 +50,7 @@ https://www.canva.com/design/DAGN2cocGyk/ZpRpbpYGyQWq_C7VZfnUMw/edit?utm_content
 
 [https://drive.google.com/drive/my-drive](https://drive.google.com/file/d/1rd2xOvIWDFTQxLXFHNbBwNbuS8AV-FF9/view?usp=sharing)
 
-![image](https://github.com/user-attachments/assets/fc7a8dce-d61f-49eb-ad9a-78da125190f1)
+![image](https://github.com/user-attachments/assets/c229a2d8-f1e4-4fab-81b9-73370007858d)
 
 ## Entrega 02
 ![image](https://github.com/user-attachments/assets/38a100eb-b6d9-4610-924c-4f7f25a92cd6)
