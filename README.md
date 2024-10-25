@@ -1,8 +1,8 @@
 ![image](https://github.com/user-attachments/assets/f6970940-4de1-4098-874a-876e7203d058)
 
 
-# Trabalho Analise de Software
-Esse Projeto é referente a disciplina de Analise e Projeto de Software da UNICAP, ministrada pelo professor Lucas Rodolfo Celestino de Farias
+# Trabalho Análise de Software
+Esse Projeto é referente a disciplina de Análise e Projeto de Software da UNICAP, ministrada pelo professor Lucas Rodolfo Celestino de Farias
 
 ## Grupo
 Gustavo Porto;
@@ -42,11 +42,11 @@ Nosso produto possui funcionalidades de gestão de alunos, professores, turmas, 
 
 ![image](https://github.com/user-attachments/assets/5143f6e7-8c99-4891-afeb-7328f34bd507)
 
-## Acesso ao protótipo
+## Acesso ao Protótipo
 
 https://www.canva.com/design/DAGN2cocGyk/ZpRpbpYGyQWq_C7VZfnUMw/edit?utm_content=DAGN2cocGyk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
-## Screencast do protótipo
+## Screencast do Protótipo
 
 [https://drive.google.com/drive/my-drive](https://drive.google.com/file/d/1rd2xOvIWDFTQxLXFHNbBwNbuS8AV-FF9/view?usp=sharing)
 
