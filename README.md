@@ -52,6 +52,13 @@ https://www.canva.com/design/DAGN2cocGyk/ZpRpbpYGyQWq_C7VZfnUMw/edit?utm_content
 
 ![image](https://github.com/user-attachments/assets/fc7a8dce-d61f-49eb-ad9a-78da125190f1)
 
+## Entrega 02
+![image](https://github.com/user-attachments/assets/38a100eb-b6d9-4610-924c-4f7f25a92cd6)
+
+![image](https://github.com/user-attachments/assets/a7eda72f-e6b9-4829-82a3-cc1ea5e85329)
+
+## Screencast do Protótipo
+
 ## Acesso ao Jira
 https://pedromota.atlassian.net/jira/software/projects/SCRUM/boards/1
 
