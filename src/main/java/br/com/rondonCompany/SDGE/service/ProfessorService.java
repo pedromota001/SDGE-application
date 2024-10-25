@@ -33,8 +33,8 @@ public class ProfessorService {
         return professorRepository.buscaAlunos();
     }
 
-    public String verificaCoordenador(Optional<Professor> professor, Model theModel){
-        if(professor.isPresent() && professor.get().getSenha().equalsIgnoreCase(professor.get().getSenha()) && professor.get().isCoordenador()){
+    public String verificaCoordenador(Optional<Professor> professor, Professor theProfessor, Model theModel){
+        if(professor.isPresent() && professor.get().getSenha().equalsIgnoreCase(theProfessor.getSenha()) && professor.get().isCoordenador()){
             return "redirect:/coordenadores/coordenador-main-page";
         }
         else{

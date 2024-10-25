@@ -39,7 +39,7 @@ public class CoordenadorController {
     @PostMapping("/validate")
     public String validateCoordenadorLogin(@ModelAttribute("coordenador") Professor professor, Model theModel){
         Optional<Professor> professorExistente = professorService.buscaPorEmail(professor.getEmail());
-        return professorService.verificaCoordenador(professorExistente, theModel);
+        return professorService.verificaCoordenador(professorExistente, professor,theModel);
     }
 
     @GetMapping("/coordenador-main-page")
@@ -52,13 +52,14 @@ public class CoordenadorController {
         return "coordenadores/atribuir-professor";
     }
 
-    /*@GetMapping("/coordenador-main-page/gerenciamento-turmas/{id}")
-    public String mostraTurmas(@PathVariable Long id, Model theModel){
-        List<AlunoDTO> alunosTurma = alunoService.findByTurma_Id(id);
-        alunosTurma.forEach(System.out::println);
-        theModel.addAttribute("aluno", alunosTurma);
-        return "coordenadores/coordenador-main-page";
-    }*/
+    //implementar exibicao de turmas no sprint 2
+//    @GetMapping("/coordenador-main-page/gerenciamento-turmas/{id}")
+//    public String mostraTurmas(@PathVariable Long id, Model theModel){
+//        List<AlunoDTO> alunosTurma = alunoService.findByTurma_Id(id);
+//        alunosTurma.forEach(System.out::println);
+//        theModel.addAttribute("aluno", alunosTurma);
+//        return "coordenadores/coordenador-main-page";
+//    }
 
     @GetMapping("/mostrarTurma")
     public String mostraTurma(Model theModel){

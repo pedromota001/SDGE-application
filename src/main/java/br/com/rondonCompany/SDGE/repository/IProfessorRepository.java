@@ -1,7 +1,6 @@
 package br.com.rondonCompany.SDGE.repository;
 
 import br.com.rondonCompany.SDGE.dto.AlunoDTO;
-import br.com.rondonCompany.SDGE.entity.Aluno;
 import br.com.rondonCompany.SDGE.entity.Professor;
 import br.com.rondonCompany.SDGE.entity.Turma;
 import org.springframework.data.jpa.repository.JpaRepository;
