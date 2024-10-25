@@ -19,8 +19,6 @@ Lucas Gurgel;
 
 Gustavo Porto;
 
-Lucas Gurgel;
-
 Luís Gustavo Sampaio;
 
 Igor Carvalheira;
