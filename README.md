@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/f6970940-4de1-4098-874a-876e7203d058)
+![image](https://github.com/user-attachments/assets/57bc24c4-6fd8-40d6-8978-028fdfaf6ce6)
 
 
 # Trabalho Análise de Software
