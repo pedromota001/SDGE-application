@@ -29,6 +29,11 @@ public class CoordenadorController {
         this.alunoService = alunoService;
     }
 
+    @GetMapping("/index")
+    public String coordenadorIndex(){
+        return "index";
+    }
+
     @GetMapping("/showCoordenadorLoginForm")
     public String loginCoordenador(Model theModel){
         Professor professor = new Professor();

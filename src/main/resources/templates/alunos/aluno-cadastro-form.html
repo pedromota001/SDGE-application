@@ -9,7 +9,7 @@
 </head>
 <body>
 <div id="voltar">
-    <a href="aluno-login-form.html">
+    <a th:href="@{/alunos/showAlunoLoginForm}">
         <img th:src="@{/images/setaVoltar.svg}" id="setaVoltar" alt="Seta Voltar">
     </a>
 </div>
@@ -18,10 +18,10 @@
         <div id="inicio">
             <h1>Cadastro do Aluno</h1>
         </div>
-        <form id="forms" action="#" th:action="@{/alunos/save}"
+        <form  id="formulario" action="#" th:action="@{/alunos/save}"
               th:object="${aluno}" th:method="POST" >
-
-            <div>
+            <div id="forms">
+                <div>
                 <p>Nome:</p>
 
                 <input class="inputText" type="text" th:field="*{nome}"
@@ -37,29 +37,28 @@
                 <input class="inputText" type="text" th:field="*{endereco}"
                        placeholder="Insira seu endereço" required>
 
+                </div>
+                <div>
+                    <p>Telefone:</p>
+
+                    <input class="inputText" type="text" th:field="*{telefone}"
+                           placeholder="Insira seu telefone" required>
+
+                    <p>Email:</p>
+
+                    <input class="inputText" type="email" th:field="*{email}"
+                           placeholder="Insira seu email" required>
+
+                    <p>Senha:</p>
+
+                    <input class="inputText" type="password" th:field="*{senha}"
+                           placeholder="Insira sua senha" required>
+
+                </div>
             </div>
-            <div>
-                <p>Telefone:</p>
-
-                <input class="inputText" type="text" th:field="*{telefone}"
-                       placeholder="Insira seu telefone" required>
-
-                <p>Email:</p>
-
-                <input class="inputText" type="email" th:field="*{email}"
-                       placeholder="Insira seu email" required>
-
-                <p>Senha:</p>
-
-                <input class="inputText" type="password" th:field="*{senha}"
-                       placeholder="Insira sua senha" required>
-
-            </div>
-
             <div>
                 <button id="button" type="submit" onclick="validarFormulario()">Avançar</button>
             </div>
-
         </form>
 
         <div id="mensagemSucesso">Cadastro realizado com sucesso!</div>

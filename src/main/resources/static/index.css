@@ -68,3 +68,7 @@ body{
 #buttonCoordenacao{
     margin-top: 10%;
 }
+
+#butaoProfessor{
+    display:none;
+}

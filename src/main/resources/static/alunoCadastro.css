@@ -42,9 +42,15 @@ body{
     flex-direction: row;
     gap: 10%;
     justify-content: center;
+
 }
 
-
+#formulario{
+    display:flex;
+    flex-direction : column;
+    align-items: center;
+    justify-content: center;
+}
 
 #forms p{
     margin-bottom: 8px;
@@ -69,7 +75,7 @@ body{
     display: inline-flex;
     line-height: 40px;
     text-align: center;
-    border: 2px solid rgba(255, 255, 255, 0.835);
+    /*border: 2px solid rgba(255, 255, 255, 0.835);*/
     margin-top: 30px;
     border-radius: 10px;
     cursor: pointer;

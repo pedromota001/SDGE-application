@@ -10,7 +10,7 @@
 <body>
 
 <div id="voltar">
-    <a href="../index.html">
+    <a th:href="@{/coordenadores/index}">
         <img th:src="@{/images/setaVoltar.svg}" id="setaVoltar" alt="Seta Voltar">
     </a>
 </div>
@@ -35,7 +35,7 @@
 
             <p>Senha:</p>
 
-            <input class="inputText" type="text" th:field="*{senha}"
+            <input class="inputText" type="password" th:field="*{senha}"
                    placeholder="Insira sua senha" required>
 
             <div>
