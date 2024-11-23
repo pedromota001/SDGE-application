@@ -4,7 +4,6 @@ body{
     margin: 0px;
     padding: 0px;
     font-family: 'Inter';
-    background-image:url('images/imagemFundo.svg');
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
@@ -20,10 +19,11 @@ body{
 }
 
 #cadastro{
-    width: 700px;
-    height: 550px;
-    border: 3px solid rgba(255, 255, 255, 0.835);
-    border-radius: 30px;
+    width: 1100px;
+    height: 750px;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
     color: rgba(255, 255, 255, 0.835);
     background-color: rgba(255, 255, 255, 0.01);
     margin-bottom: 10%;
@@ -31,6 +31,9 @@ body{
 
 #inicio{
     text-align: center;
+    color: black;
+    margin-bottom: 20px;
+    margin-top: 30px;
 }
 
 #inicio p{
@@ -42,7 +45,7 @@ body{
     flex-direction: row;
     gap: 10%;
     justify-content: center;
-
+    color: black;
 }
 
 #formulario{
@@ -53,42 +56,44 @@ body{
 }
 
 #forms p{
-    margin-bottom: 8px;
+    margin-top: 8px;
+    margin-bottom: 0px;
     padding-left: 3px;
     font-size: 20px;
+    color: black;
 }
 
 .inputText{
-    width: 250px;
+    width: 350px;
     height: 40px;
     border: none;
-    border-radius: 10px;
+    border-bottom: 2px solid black;
     padding: 3px 8px;
     font-size: 17px;
     background-color: rgba(255, 255, 255, 0.835);
-    color: #1C3D5A;
+    color: black;
 }
 
 #button{
-    width: 100px;
-    height: 40px;
+    width: 150px;
+    height: 50px;
     display: inline-flex;
-    line-height: 40px;
+    line-height: 50px;
+    border: none;
     text-align: center;
-    /*border: 2px solid rgba(255, 255, 255, 0.835);*/
+    background-color: #1C3D5A;
     margin-top: 30px;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.835);
+    color: white;
     font-size: 17px;
-    background: none;
     align-items: center;
     justify-content: center;
 }
 
 #button:hover{
-    background-color: rgb(0,0,0,0.3);
+    background-color: rgb(28, 61, 90, 0.9);
 }
 
 #voltar {

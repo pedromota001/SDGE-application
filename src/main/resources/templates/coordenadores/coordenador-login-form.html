@@ -16,6 +16,9 @@
 </div>
 <div class="container">
     <div class="container" id="login">
+        <div id="logo">
+            <img th:src="@{/images/logo.svg}" alt="Logo">
+        </div>
         <div id="inicio">
             <p>Área do Coordenador</p>
             <h1>Login</h1>
@@ -38,7 +41,7 @@
             <input class="inputText" type="password" th:field="*{senha}"
                    placeholder="Insira sua senha" required>
 
-            <div>
+            <div id="buttonCenter">
                 <button id="button" type="submit">Avançar</button>
             </div>
 

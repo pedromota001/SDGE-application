@@ -16,6 +16,9 @@
 </div>
 <div class="container">
     <div class="container" id="login">
+        <div id="logo">
+            <img th:src="@{/images/logo.svg}" alt="Logo">
+        </div>
         <div id="inicio">
             <p>Área do Aluno</p>
             <h1>Login</h1>
@@ -40,14 +43,14 @@
                    placeholder="Insira sua senha" required>
 
             <div>
-                <div>
+                <div id="buttonCenter">
                     <button id="button" type="submit">Avançar</button>
                 </div>
             <div>
         </form>
 
         <div id="cadastro">
-            <a>Para se cadastrar</a>
+            <a>Para se cadastrar&nbsp;</a>
             <a id="linkCadastro" th:href="@{/alunos/showAlunoCadastroForm}">clique aqui!</a>
         </div>
     </div>
