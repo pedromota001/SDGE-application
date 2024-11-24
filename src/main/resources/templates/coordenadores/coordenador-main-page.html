@@ -28,33 +28,62 @@
             <a class="button" th:href="@{/coordenadores/mostrarTurma}" id="buttonTurma">Gerenciar turmas</a>
         </div>
 
-    </div>
 
+        <div id="buttonSair" onclick="gerenciarTurmas()">
+            <a class="button" th:href="@{/coordenadores/showCoordenadorLoginForm}">Sair</a>
+        </div>
+
+    </div>
     <div id="telaInicial">
-        <h1>Área do Coordenador</h1>
+        <div>
+            <h1>Área do Coordenador</h1>
+        </div>
     </div>
-
 </div>
 <script>
-    var buttonMenu = window.document.getElementById("buttonMenu")
-    var menu = window.document.getElementById("menu")
-    var telaInicial = window.document.getElementById("telaInicial")
-    var gerenciarTurma = window.document.getElementById("gerenciarTurma")
-    function aparecerMenu(){
-        menu.style = "display: flex"
-        buttonMenu.style = "display:none"
-    }
-    function fecharMenu(){
-        menu.style = "display:none"
-        buttonMenu.style = "display:flex"
+    var buttonMenu = document.getElementById("buttonMenu");
+    var menu = document.getElementById("menu");
+    var telaInicial = document.getElementById("telaInicial");
+    var closeButton = document.getElementById("imgFecharMenu");
+
+    menu.classList.add("open");
+    menu.style.display = "flex";
+    buttonMenu.style.display = "none";
+
+    function alternarMenu() {
+        if (menu.classList.contains("open")) {
+            fecharMenu();
+        } else {
+            abrirMenu();
+        }
     }
 
-    function aparecerTelaInicial(){
-        telaInicial.style = "display: flex"
-        gerenciarTurma.style = "display: none"
+    function abrirMenu() {
+        menu.classList.remove("close");
+        menu.classList.add("open");
+        menu.style.display = "flex";
+        buttonMenu.style.display = "none";
 
-        history.pushState(null, '', '/coordenadores/coordenador-main-page');
+        telaInicial.style.marginLeft = "300px";
+        telaInicial.style.width = "calc(100% - 300px)";
     }
+
+    function fecharMenu() {
+        menu.classList.remove("open");
+        menu.classList.add("close");
+
+        setTimeout(() => {
+            menu.style.display = "none";
+            buttonMenu.style.display = "flex";
+        }, 300);
+
+        telaInicial.style.marginLeft = "0";
+        telaInicial.style.width = "100%";
+    }
+
+    buttonMenu.addEventListener("click", alternarMenu);
+    closeButton.addEventListener("click", fecharMenu);
+
 </script>
 </body>
 </html>

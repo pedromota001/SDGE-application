@@ -1,32 +1,146 @@
-body{
-    margin: 0px;
-    padding: 0px;
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+body {
+    margin: 0;
+    padding: 0;
     font-family: 'Inter';
-    background-image:url('images/imagemFundo.svg');
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
 }
 
-#buttonCadastroProf{
+.container {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.container-column{
+    display: flex;
+    flex-direction: column;
+}
+
+#buttonMenu {
+    cursor: pointer;
+    margin-top: 1.5%;
+    margin-left: 0.5%;
+}
+
+#menu {
+    height: 100vh;
+    width: 300px;
+    display: flex;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(0);
+    opacity: 1;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    z-index: 1;
+}
+
+#menu.open {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+#menu.close {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+#imgFecharMenu {
+    cursor: pointer;
+    margin-left: 3%;
+    margin-top: 8%;
+}
+
+.button {
+    display: inline-block;
+    text-decoration: none;
+    line-height: 75px;
+    width: 100%;
+    height: 75px;
+    font-size: 22px;
+    color: #1C3D5A;
+    text-align: center;
+    border-bottom: 1px solid rgba(28, 61, 90);
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: rgb(28, 61, 90, 0.3);
+}
+
+#buttonTelaInicial {
+    border-top: 1px solid rgba(255, 255, 255, 0.835);
+    margin-top: 5%;
+}
+
+#telaInicial {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    flex-grow: 1;
+    margin-left: 300px;
+    width: 100%;
+    transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+#botaoTela{
+    text-decoration: none;
+    color: #1C3D5A;
+}
+
+#tabelaAlunos{
+    margin-left: 5%;
+    margin-top: 2%;
+}
+
+#gerenciarTurma {
+    display: none;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+}
+
+#buttonCadastroProf {
     width: 200px;
     height: 40px;
     display: inline-flex;
     line-height: 40px;
     border: 2px solid rgba(255, 255, 255, 0.835);
     margin-top: 30px;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
     color: rgba(255, 255, 255, 0.835);
-    font-size: 20px;
+    font-size: 17px;
     text-align: center;
     align-items: center;
     justify-content: center;
     background: none;
+    margin-left: 90%;
 }
 
-#gerenciarTurma{
-    margin-left: 72%;
+#buttonTurma{
+    background-color:rgb(28,61,90);
+    color: white;
+}
+
+#buttonCadastroProf{
+    color: white;
+    background-color: #1C3D5A;
+    cursor: pointer;
+    border: none;
+}
+
+#buttonCadastroProf:hover{
+    background-color: rgb(28,61,90, 0.8);
 }

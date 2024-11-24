@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Coordenador</title>
+    <title>Adcionar Professor</title>
     <link rel="stylesheet" th:href="@{/cadastrarProfessor.css}" />
 </head>
 <body>
@@ -15,21 +15,32 @@
 </div>
 <div class="container">
     <div class="container" id="login">
+        <div id="logo">
+            <img th:src="@{/images/logo.svg}" alt="Logo">
+        </div>
         <div id="inicio">
-            <h1>Cadastrar Professor</h1>
+            <h1>Área do Coordenador</h1>
+            <p>Adicionar Professor</p>
         </div>
 
-        <form id="forms">
-            <p>Nome:</p>
+        <div th:if="${error}" class="alert alert-danger" role="alert">
+            <p th:text="${error}"></p>
+        </div>
 
-            <input class="inputText" type="text" placeholder="Insira o nome" required>
-
+        <form id="forms" action="#" th:action="@{/coordenadores/validate}"
+              th:object="${coordenador}" th:method="POST">
             <p>Email:</p>
 
-            <input class="inputText" type="text" placeholder="Insira o email" required>
+            <input class="inputText" type="text"
+                   placeholder="Insira o nome" required>
 
-            <div>
-                <button id="button" onclick="validarFormulario()">Avançar</button>
+            <p>Senha:</p>
+
+            <input class="inputText" type="password"
+                   placeholder="Insira o email" required>
+
+            <div id="buttonCenter">
+                <button id="button" type="submit">Avançar</button>
             </div>
 
         </form>
