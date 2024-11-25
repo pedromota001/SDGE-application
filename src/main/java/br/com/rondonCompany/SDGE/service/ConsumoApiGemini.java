@@ -39,7 +39,7 @@ public class ConsumoApiGemini {
 
         } catch (Exception e) {
             e.printStackTrace();
-            return "Erro ao obter tradução: " + e.getMessage();
+            return "Erro ao obter texto de ajuda: " + e.getMessage();
         }
     }
 }
