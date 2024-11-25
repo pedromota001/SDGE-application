@@ -35,9 +35,19 @@
     </div>
 
     <div id="telaInicial">
-        <div>
-            <a th:href="@{/coordenadores/showProfessorForm}"
-               id="buttonCadastroProf">Adicionar Professor</a>
+        <div id="superior">
+            <div id="selecao">
+                <label for="opcoes">Escolha uma opção:</label>
+                <select id="opcoes" name="opcoes">
+                    <option value="opcao1" disabled selected>Selecione uma opção</option>
+                </select>
+            </div>
+            <div id="buttonProf">
+                <a th:href="@{/coordenadores/showProfessorForm}"
+                   id="buttonCadastroProf">Adicionar Professor</a>
+                <a th:href="@{/coordenadores/showProfessorForm}"
+                   id="buttonAddTurma">Adicionar Turma</a>
+            </div>
         </div>
         <div>
             <table class="table table-bordered table-striped" id="tabelaAlunos">
