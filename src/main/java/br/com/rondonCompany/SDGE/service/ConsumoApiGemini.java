@@ -9,10 +9,10 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class ConsumoApiGemini {
-    private static final String API_KEY = System.getenv("GOOGLE_API_KEY");
+    private static final String API_KEY = "AIzaSyADRRKmdpxTfjuIdb_mJlVRPH1r3HmrFkg";
     private static final String ENDPOINT_URL = "https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generateText";
 
-    public static String obterTraducao(String texto) {
+    public static String obter_texto_prompt(String texto) {
         try {
             HttpClient client = HttpClient.newHttpClient();
 

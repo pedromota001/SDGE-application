@@ -1,12 +1,16 @@
 package br.com.rondonCompany.SDGE.controller;
 
 import br.com.rondonCompany.SDGE.entity.Aluno;
+import br.com.rondonCompany.SDGE.service.ConsumoApiGemini;
 import br.com.rondonCompany.SDGE.service.aluno.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -60,4 +64,24 @@ public class AlunoController {
     public String showAlunoMainPage(){
         return "alunos/aluno-main-page";
     }
+
+
+    @GetMapping("/chatbot")
+    public String chatbot_page(){
+        return "chat-bot";
+    }
+
+    @PostMapping("/api/chat")
+    public ResponseEntity<?> chat(@RequestBody Map<String, String> pload){
+        String userMessage = pload.get("message");
+        if (userMessage == null || userMessage.trim().isEmpty()) {
+            return ResponseEntity.badRequest().body("Mensagem inválida.");
+        }
+
+        String botReply = ConsumoApiGemini.obter_texto_prompt(userMessage);
+        Map<String, String> response = new HashMap<>();
+        response.put("reply", botReply);
+        return ResponseEntity.ok(response);
+    }
+
 }

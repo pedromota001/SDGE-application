@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        /* Estilo básico */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #chatbox {
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-width: 400px;
+            height: 400px;
+            overflow-y: auto;
+        }
+        #messageInput {
+            width: calc(100% - 60px);
+            margin-right: 10px;
+        }
+        .user-message {
+            text-align: right;
+            margin: 5px;
+        }
+        .bot-message {
+            text-align: left;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="chatbox">
+</div>
+<input type="text" id="messageInput" placeholder="Digite sua mensagem">
+<button id="sendButton">Enviar</button>
+
+<script>
+    document.getElementById('sendButton').addEventListener('click', async () => {
+            const messageInput = document.getElementById('messageInput'); // Captura o campo de entrada
+    const chatbox = document.getElementById('chatbox'); // Captura o div do chat
+    const userMessage = messageInput.value; // Captura o texto digitado pelo usuário
+
+    if (userMessage.trim() === '') {
+        alert("Digite uma mensagem antes de enviar!"); // Evita mensagens vazias
+        return;
+    }
+
+    // Adiciona a mensagem do usuário no chatbox
+    const userBubble = document.createElement('div'); // Cria um novo elemento div
+    userBubble.className = 'user-message'; // Define a classe do div
+    userBubble.innerText = userMessage; // Define o texto do div
+    chatbox.appendChild(userBubble); // Adiciona o div no chatbox
+
+    // Limpa o campo de input após o envio
+    messageInput.value = '';
+
+    // Envia a mensagem para o backend e obtém a resposta
+    try {
+        const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: userMessage })
+        });
+
+        const data = await response.json();
+
+        // Adiciona a resposta do bot no chatbox
+        const botBubble = document.createElement('div');
+        botBubble.className = 'bot-message';
+        botBubble.innerText = data.reply;
+        chatbox.appendChild(botBubble);
+
+    } catch (error) {
+        console.error("Erro ao enviar mensagem para o backend:", error);
+        alert("Erro ao se comunicar com o servidor. Tente novamente mais tarde.");
+    }
+    });
+</script>
+</body>
+</html>
+
+
+
