@@ -1,5 +1,6 @@
 package br.com.rondonCompany.SDGE.service;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -9,17 +10,27 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class ConsumoApiGemini {
-    private static final String API_KEY = "AIzaSyADRRKmdpxTfjuIdb_mJlVRPH1r3HmrFkg";
-    private static final String ENDPOINT_URL = "https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generateText";
+    private static final String API_KEY = "AIzaSyCf51UtIZouFZezE-ll1qPj89pXT__NIoI";
+    private static final String ENDPOINT_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
 
     public static String obter_texto_prompt(String texto) {
         try {
             HttpClient client = HttpClient.newHttpClient();
 
             JsonObject requestBody = new JsonObject();
-            requestBody.addProperty("prompt", texto);
-            requestBody.addProperty("temperature", 0.7);
-            requestBody.addProperty("maxOutputTokens", 1000);
+            JsonArray contentsArray = new JsonArray();
+            JsonObject partsObject = new JsonObject();
+            JsonArray partsArray = new JsonArray();
+
+            String textoComInstrução = texto + " Por favor, responda em português.";
+            partsObject.addProperty("text", textoComInstrução);
+            partsArray.add(partsObject);
+
+            JsonObject contentObject = new JsonObject();
+            contentObject.add("parts", partsArray);
+            contentsArray.add(contentObject);
+
+            requestBody.add("contents", contentsArray);
 
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(new URI(ENDPOINT_URL + "?key=" + API_KEY))
@@ -30,12 +41,18 @@ public class ConsumoApiGemini {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             JsonObject responseBody = JsonParser.parseString(response.body()).getAsJsonObject();
-            String gemini_texto = responseBody.getAsJsonArray("candidates")
+
+            String geminiText = responseBody.getAsJsonArray("candidates")
                     .get(0)
                     .getAsJsonObject()
-                    .get("output")
+                    .getAsJsonObject("content")
+                    .getAsJsonArray("parts")
+                    .get(0)
+                    .getAsJsonObject()
+                    .get("text")
                     .getAsString();
-            return gemini_texto;
+            System.out.println(geminiText);
+            return geminiText;
 
         } catch (Exception e) {
             e.printStackTrace();

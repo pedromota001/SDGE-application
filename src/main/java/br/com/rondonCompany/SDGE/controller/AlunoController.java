@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -72,7 +73,7 @@ public class AlunoController {
     }
 
     @PostMapping("/api/chat")
-    public ResponseEntity<?> chat(@RequestBody Map<String, String> pload){
+    public ResponseEntity<?> chat(@RequestBody Map<String, String> pload) throws IOException {
         String userMessage = pload.get("message");
         if (userMessage == null || userMessage.trim().isEmpty()) {
             return ResponseEntity.badRequest().body("Mensagem inválida.");
