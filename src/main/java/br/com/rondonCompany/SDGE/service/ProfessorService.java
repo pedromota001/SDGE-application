@@ -1,7 +1,7 @@
 package br.com.rondonCompany.SDGE.service;
 
 import br.com.rondonCompany.SDGE.dto.AlunoDTO;
-import br.com.rondonCompany.SDGE.entity.Aluno;
+import br.com.rondonCompany.SDGE.dto.ProfessorDTO;
 import br.com.rondonCompany.SDGE.entity.Professor;
 import br.com.rondonCompany.SDGE.entity.Turma;
 import br.com.rondonCompany.SDGE.repository.IProfessorRepository;
@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProfessorService {
@@ -41,5 +42,24 @@ public class ProfessorService {
             theModel.addAttribute("error", "Email ou senha invalidos, tente novamente");
             return "coordenadores/coordenador-login-form";
         }
+    }
+
+    public List<ProfessorDTO> findAll() {
+        List<Professor> lista = professorRepository.findAll();
+        return converteDados(lista);
+    }
+
+    public List<ProfessorDTO> converteDados(List<Professor> listaProfessores){
+        return listaProfessores.stream()
+                .map(p -> new ProfessorDTO(p.getEmail()))
+                .collect(Collectors.toList());
+    }
+
+    public Optional<Professor> buscaPorEmail(ProfessorDTO professor) {
+        return professorRepository.findByEmail(professor.email());
+    }
+
+    public void save(Professor professor){
+        professorRepository.save(professor);
     }
 }

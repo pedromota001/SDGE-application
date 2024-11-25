@@ -2,10 +2,13 @@ package br.com.rondonCompany.SDGE.controller;
 
 
 import br.com.rondonCompany.SDGE.dto.AlunoDTO;
+import br.com.rondonCompany.SDGE.dto.ProfessorDTO;
 import br.com.rondonCompany.SDGE.entity.Aluno;
 import br.com.rondonCompany.SDGE.entity.Professor;
 import br.com.rondonCompany.SDGE.entity.Turma;
+import br.com.rondonCompany.SDGE.repository.IProfessorRepository;
 import br.com.rondonCompany.SDGE.service.ProfessorService;
+import br.com.rondonCompany.SDGE.service.TurmaService;
 import br.com.rondonCompany.SDGE.service.aluno.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,11 +25,13 @@ public class CoordenadorController {
 
     private ProfessorService professorService;
     private AlunoService alunoService;
+    private TurmaService turmaService;
 
     @Autowired
-    public CoordenadorController(ProfessorService professorService, AlunoService alunoService) {
+    public CoordenadorController(ProfessorService professorService, AlunoService alunoService, TurmaService turmaService) {
         this.professorService = professorService;
         this.alunoService = alunoService;
+        this.turmaService = turmaService;
     }
 
     @GetMapping("/index")
@@ -57,14 +62,16 @@ public class CoordenadorController {
         return "coordenadores/atribuir-professor";
     }
 
-    //implementar exibicao de turmas no sprint 2
-//    @GetMapping("/coordenador-main-page/gerenciamento-turmas/{id}")
-//    public String mostraTurmas(@PathVariable Long id, Model theModel){
-//        List<AlunoDTO> alunosTurma = alunoService.findByTurma_Id(id);
-//        alunosTurma.forEach(System.out::println);
-//        theModel.addAttribute("aluno", alunosTurma);
-//        return "coordenadores/coordenador-main-page";
-//    }
+    @GetMapping("/mostrarTurma/{id}")
+    public String mostraTurmas(@PathVariable Long id, Model theModel){
+        List<AlunoDTO> alunosTurma = alunoService.findByTurma_Id(id);
+        List<ProfessorDTO> professores_disponiveis = professorService.findAll();
+        alunosTurma.forEach(System.out::println);
+        theModel.addAttribute("aluno", alunosTurma);
+        theModel.addAttribute("professor", professores_disponiveis);
+        return "coordenadores/mostrar-turma";
+    }
+
 
     @GetMapping("/mostrarTurma")
     public String mostraTurma(Model theModel){
@@ -76,8 +83,31 @@ public class CoordenadorController {
         return "coordenadores/mostrar-turma";
     }
 
-    @GetMapping("/showProfessorForm")
-    public String showProfessorForm(){
-        return "coordenadores/atribuir-professor";
+
+//    @GetMapping("/showProfessorForm")
+//    public String showProfessorForm(){
+//        return "coordenadores/atribuir-professor";
+//    }
+
+    @PostMapping("/mostrarTurma/{id}")
+    public String atribuir_professor(@PathVariable Long id, @ModelAttribute("professor") ProfessorDTO professor, Model theModel){
+        Optional<Professor> professor_busca = professorService.buscaPorEmail(professor.email());
+        Optional<Turma> turma_buscas = turmaService.findById(id);
+        if(professor_busca.isPresent() && turma_buscas.isPresent()){
+            Professor wilmer = professor_busca.get();
+            Turma turma = turma_buscas.get();
+            wilmer.getListaTurmas().add(turma);
+            turma.getListaProfessores().add(wilmer);
+            professorService.save(wilmer);
+            turmaService.save(turma);
+            //colocar redirect para outra pagina
+        }
+        else{
+            //redirect pagina de erro
+        }
+        return null;//ajeitar
     }
+
+
+
 }

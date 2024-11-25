@@ -28,4 +28,52 @@ public class Turma {
             inverseJoinColumns = @JoinColumn(name = "id_professor")
     )
     private Set<Professor> listaProfessores = new HashSet<>();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getSerie() {
+        return serie;
+    }
+
+    public void setSerie(String serie) {
+        this.serie = serie;
+    }
+
+    public String getTurno() {
+        return turno;
+    }
+
+    public void setTurno(String turno) {
+        this.turno = turno;
+    }
+
+    public List<Aluno> getListaAlunos() {
+        return listaAlunos;
+    }
+
+    public void setListaAlunos(List<Aluno> listaAlunos) {
+        this.listaAlunos = listaAlunos;
+    }
+
+    public Set<Professor> getListaProfessores() {
+        return listaProfessores;
+    }
+
+    public void setListaProfessores(Set<Professor> listaProfessores) {
+        this.listaProfessores = listaProfessores;
+    }
 }
