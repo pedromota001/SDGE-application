@@ -100,12 +100,11 @@ public class CoordenadorController {
             turma.getListaProfessores().add(wilmer);
             professorService.save(wilmer);
             turmaService.save(turma);
-            //colocar redirect para outra pagina
+            return "redirect:/coordenadores/coordenador-main-page";
         }
         else{
-            //redirect pagina de erro
+            return "coordenadores/mostrar-turma";
         }
-        return null;//ajeitar
     }
 
 
