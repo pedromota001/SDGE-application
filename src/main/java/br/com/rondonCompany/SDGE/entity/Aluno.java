@@ -3,6 +3,9 @@ package br.com.rondonCompany.SDGE.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "alunos")
 public class Aluno {
@@ -27,6 +30,9 @@ public class Aluno {
     @ManyToOne
     private Turma turma;
 
+    @OneToMany(mappedBy = "notas", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Aluno> listaNotas = new ArrayList<>();
+
     public Aluno(){}
 
     public Aluno(String dataMatricula, String nome, String dataNascimento, String endereco, String telefone, String email, String senha) {
@@ -37,6 +43,14 @@ public class Aluno {
         this.telefone = telefone;
         this.email = email;
         this.senha = senha;
+    }
+
+    public List<Aluno> getListaNotas() {
+        return listaNotas;
+    }
+
+    public void setListaNotas(List<Aluno> listaNotas) {
+        this.listaNotas = listaNotas;
     }
 
     public Long getId() {
