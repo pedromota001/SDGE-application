@@ -1,6 +1,8 @@
 package br.com.rondonCompany.SDGE.controller;
 
+import br.com.rondonCompany.SDGE.dto.NotasDTO;
 import br.com.rondonCompany.SDGE.entity.Aluno;
+import br.com.rondonCompany.SDGE.entity.Notas;
 import br.com.rondonCompany.SDGE.service.ConsumoApiGemini;
 import br.com.rondonCompany.SDGE.service.aluno.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -85,13 +88,14 @@ public class AlunoController {
         return ResponseEntity.ok(response);
     }
 
-    /*
-    @GetMapping("/grades")
-    public String getGrades(Model model){
 
-        model.addAttribute("grades", alunoService.);
+    @GetMapping("/notasAluno")
+    public String getGrades(Model model, @RequestParam Aluno aluno){
+
+        List<NotasDTO> notasList = alunoService.findByAluno_ID(aluno.getId());
+        model.addAttribute("grades", notasList);
         return "alunos/aluno-exibicaonotas-page";
     }
 
-     */
+
 }
