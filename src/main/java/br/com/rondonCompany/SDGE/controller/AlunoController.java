@@ -85,4 +85,13 @@ public class AlunoController {
         return ResponseEntity.ok(response);
     }
 
+    /*
+    @GetMapping("/grades")
+    public String getGrades(Model model){
+
+        model.addAttribute("grades", alunoService.);
+        return "alunos/aluno-exibicaonotas-page";
+    }
+
+     */
 }
