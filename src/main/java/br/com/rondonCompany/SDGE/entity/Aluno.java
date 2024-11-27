@@ -30,7 +30,7 @@ public class Aluno {
     @ManyToOne
     private Turma turma;
 
-    @OneToMany(mappedBy = "notas", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Aluno> listaNotas = new ArrayList<>();
 
     public Aluno(){}
