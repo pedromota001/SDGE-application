@@ -31,7 +31,7 @@ public class Aluno {
     private Turma turma;
 
     @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Aluno> listaNotas = new ArrayList<>();
+    private List<Notas> listaNotas = new ArrayList<>();
 
     public Aluno(){}
 
@@ -45,11 +45,11 @@ public class Aluno {
         this.senha = senha;
     }
 
-    public List<Aluno> getListaNotas() {
+    public List<Notas> getListaNotas() {
         return listaNotas;
     }
 
-    public void setListaNotas(List<Aluno> listaNotas) {
+    public void setListaNotas(List<Notas> listaNotas) {
         this.listaNotas = listaNotas;
     }
 
