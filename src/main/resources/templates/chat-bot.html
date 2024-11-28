@@ -3,40 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot</title>
-    <style>
-        /* Estilo básico */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        #chatbox {
-            border: 1px solid #ccc;
-            padding: 10px;
-            max-width: 400px;
-            height: 400px;
-            overflow-y: auto;
-        }
-        #messageInput {
-            width: calc(100% - 60px);
-            margin-right: 10px;
-        }
-        .user-message {
-            text-align: right;
-            margin: 5px;
-        }
-        .bot-message {
-            text-align: left;
-            margin: 5px;
-        }
-    </style>
+    <title>EduTech</title>
+    <link rel="stylesheet" th:href="@{/chatBot.css}">
 </head>
 <body>
-<div id="chatbox">
-</div>
-<input type="text" id="messageInput" placeholder="Digite sua mensagem">
-<button id="sendButton">Enviar</button>
+<div class="container">
+    <div id="buttonMenu">
+        <a onclick="aparecerMenu()">
+            <img th:src="@{/images/menu.svg}" id="imgMenu">
+        </a>
+    </div>
 
+    <div id="menu">
+
+        <div id="imgFecharMenu" onclick="fecharMenu()">
+            <img th:src="@{/images/setaMenor.svg}">
+        </div>
+
+        <div id="buttonTelaInicial" onclick="aparecerTelaInicial()">
+            <a class="button" th:href="@{/alunos/aluno-main-page}">Tela Inicial</a>
+        </div>
+
+        <div id="buttonGerenciarTurmas" onclick="gerenciarTurmas()">
+            <a class="button" th:href="@{/alunos/aluno-main-page/notasAluno}" id="buttonTurma">Ver suas notas</a>
+        </div>
+
+
+        <div id="buttonChatBot" onclick="gerenciarTurmas()">
+            <a class="button" id="buttonchAT">ChatBot</a>
+        </div>
+
+        <div id="buttonSair" onclick="gerenciarTurmas()">
+            <a class="button" th:href="@{/alunos/showAlunoLoginForm}">Sair</a>
+        </div>
+
+    </div>
+</div>
+<div class="containerChat" id="chatCompleto">
+    <div id="configBot">
+        <div id="chat">
+            <h1>Chat</h1>
+        </div>
+
+        <div id="chatbox"> </div>
+    </div>
+
+    <div id="caixaPergunta">
+        <input type="text" id="messageInput" placeholder="Digite sua mensagem">
+        <button id="sendButton">Enviar</button>
+    </div>
+
+</div>
 <script>
     document.getElementById('sendButton').addEventListener('click', async () => {
             const messageInput = document.getElementById('messageInput'); // Captura o campo de entrada
@@ -78,6 +95,48 @@
         alert("Erro ao se comunicar com o servidor. Tente novamente mais tarde.");
     }
     });
+    var buttonMenu = document.getElementById("buttonMenu");
+    var menu = document.getElementById("menu");
+    var telaInicial = document.getElementById("telaInicial");
+    var closeButton = document.getElementById("imgFecharMenu");
+
+    menu.classList.add("open");
+    menu.style.display = "flex";
+    buttonMenu.style.display = "none";
+
+    function alternarMenu() {
+        if (menu.classList.contains("open")) {
+            fecharMenu();
+        } else {
+            abrirMenu();
+        }
+    }
+
+    function abrirMenu() {
+        menu.classList.remove("close");
+        menu.classList.add("open");
+        menu.style.display = "flex";
+        buttonMenu.style.display = "none";
+
+        telaInicial.style.marginLeft = "300px";
+        telaInicial.style.width = "calc(100% - 300px)";
+    }
+
+    function fecharMenu() {
+        menu.classList.remove("open");
+        menu.classList.add("close");
+
+        setTimeout(() => {
+            menu.style.display = "none";
+            buttonMenu.style.display = "flex";
+        }, 300);
+
+        telaInicial.style.marginLeft = "0";
+        telaInicial.style.width = "100%";
+    }
+
+    buttonMenu.addEventListener("click", alternarMenu);
+    closeButton.addEventListener("click", fecharMenu);
 </script>
 </body>
 </html>
