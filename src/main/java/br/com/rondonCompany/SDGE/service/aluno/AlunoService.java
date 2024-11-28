@@ -5,8 +5,10 @@ import br.com.rondonCompany.SDGE.dto.AlunoDTO;
 import br.com.rondonCompany.SDGE.dto.NotasDTO;
 import br.com.rondonCompany.SDGE.entity.Aluno;
 import br.com.rondonCompany.SDGE.entity.Notas;
+import br.com.rondonCompany.SDGE.entity.Sistema;
 import br.com.rondonCompany.SDGE.repository.IAlunoRepository;
 import br.com.rondonCompany.SDGE.repository.INotasRepository;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -24,8 +26,9 @@ public class AlunoService {
     private INotasRepository notasRepository;
 
     @Autowired
-    public AlunoService(IAlunoRepository theAlunoRepository){
+    public AlunoService(IAlunoRepository theAlunoRepository, INotasRepository theNotasRepository){
         alunoRepository = theAlunoRepository;
+        notasRepository = theNotasRepository;
     }
 
     public void save(Aluno theAluno) {
@@ -45,8 +48,9 @@ public class AlunoService {
         return converteDados(list);
     }
 
-    public String verificaAlunoNoBanco(Optional<Aluno> aluno, Aluno theAluno, Model theModel){
+    public String verificaAlunoNoBanco(Optional<Aluno> aluno, Aluno theAluno, Model theModel, HttpSession session){
         if(aluno.isPresent() && aluno.get().getSenha().equals(theAluno.getSenha())){
+            session.setAttribute("alunoId", aluno.get().getId());
             return "redirect:/alunos/aluno-main-page";
         } else {
             theModel.addAttribute("error", "Email ou senha invalidos. Tente Novamente");

@@ -3,8 +3,10 @@ package br.com.rondonCompany.SDGE.controller;
 import br.com.rondonCompany.SDGE.dto.NotasDTO;
 import br.com.rondonCompany.SDGE.entity.Aluno;
 import br.com.rondonCompany.SDGE.entity.Notas;
+import br.com.rondonCompany.SDGE.entity.Sistema;
 import br.com.rondonCompany.SDGE.service.ConsumoApiGemini;
 import br.com.rondonCompany.SDGE.service.aluno.AlunoService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -59,9 +61,9 @@ public class AlunoController {
     }
 
     @PostMapping("/validate")
-    public String validateAlunoLogin(@ModelAttribute("aluno") Aluno theAluno, Model theModel){
+    public String validateAlunoLogin(@ModelAttribute("aluno") Aluno theAluno, Model theModel, HttpSession session){
         Optional<Aluno> alunoExistente = alunoService.findByEmail(theAluno.getEmail());
-        return alunoService.verificaAlunoNoBanco(alunoExistente, theAluno, theModel);
+        return alunoService.verificaAlunoNoBanco(alunoExistente, theAluno, theModel, session);
     }
 
     @GetMapping("/aluno-main-page")
@@ -89,13 +91,13 @@ public class AlunoController {
     }
 
 
-    @GetMapping("/notasAluno")
-    public String getGrades(Model model, @RequestParam Aluno aluno){
-
-        List<NotasDTO> notasList = alunoService.findByAluno_ID(aluno.getId());
+    @GetMapping("/aluno-main-page/notasAluno")
+    public String getGrades(Model model, HttpSession session){
+        //System.out.println(Sistema.AlunoSessao.getId());
+        Long alunoId = (Long) session.getAttribute("alunoId");
+        List<NotasDTO> notasList = alunoService.findByAluno_ID(alunoId);
         model.addAttribute("grades", notasList);
         return "alunos/aluno-exibicaonotas-page";
     }
-
 
 }
