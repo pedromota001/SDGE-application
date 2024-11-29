@@ -36,20 +36,28 @@
 
     <div id="telaInicial">
         <div id="superior">
-            <div id="selecao">
-                <label for="opcoes">Escolha uma opção:</label>
-                <select id="opcoes" name="opcoes">
-                    <option value="opcao1" disabled selected>Selecione uma opção</option>
-                    <option value="opcao1">turma 1</option>
-                    <option value="opcao1">turma 2</option>
-                    <option value="opcao1">turma 3</option>
+            <div id="selecaoTurma">
+                <label for="opcoesTurma">Escolha uma turma:</label>
+                <select id="opcoesTurma" name="opcoesTurma">
+                    <option value="" disabled selected>Selecione uma turma</option>
+                    <option value="1">turma 1</option>
+                    <option value="2">turma 2</option>
+                    <option value="3">turma 3</option>
                 </select>
             </div>
+
+            <div id="selecaoProfessor">
+                <label for="opcoesProf">Escolha um professor:</label>
+                <select id="opcoesProf" name="opcoesProf">
+                    <option value="" disabled selected>Selecione um professor</option>
+                    <option th:each="professor : ${professor}"
+                            th:text="${professor.email}">
+                    </option>
+                </select>
+            </div>
+
             <div id="buttonProf">
-                <a th:href="@{/coordenadores/showProfessorForm}"
-                   id="buttonCadastroProf">Adicionar Professor</a>
-                <a th:href="@{/coordenadores/showProfessorForm}"
-                   id="buttonAddTurma">Adicionar Turma</a>
+                <button id="buttonEnviar" class="btn btn-primary">Atribuir Professor</button>
             </div>
         </div>
         <div>
@@ -114,6 +122,56 @@
 
     buttonMenu.addEventListener("click", alternarMenu);
     closeButton.addEventListener("click", fecharMenu);
+
+    document.getElementBy// Salvar o ID da turma no Local Storage ao selecionar
+    document.getElementById("opcoesTurma").addEventListener("change", function () {
+        const turmaId = this.value;
+        if (turmaId) {
+            localStorage.setItem("turmaSelecionada", turmaId);
+            const novaUrl = `/coordenadores/mostrarTurma/${turmaId}`;
+            window.location.href = novaUrl;
+        }
+    });
+
+    // Enviar os dados da turma e professor
+    document.getElementById("buttonEnviar").addEventListener("click", () => {
+        const professorSelecionado = document.getElementById("opcoesProf").value;
+        const turmaSelecionada = localStorage.getItem("turmaSelecionada"); // Recupera a turma do Local Storage
+
+        if (!turmaSelecionada || !professorSelecionado) {
+            alert("Por favor, selecione uma turma e um professor.");
+            return;
+        }
+
+        const payload = {
+            turma: parseInt(turmaSelecionada),
+            professor: String(professorSelecionado)
+        };
+
+        fetch(`/coordenadores/mostrarTurma/${turmaSelecionada}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert("Professor atribuído com sucesso!");
+                } else {
+                    alert("Ocorreu um erro ao atribuir o professor.");
+                }
+            })
+            .catch(error => console.error('Erro:', error));
+    });
+
+    // Recuperar a turma selecionada ao carregar a página e selecionar automaticamente no dropdown
+    window.addEventListener("load", () => {
+        const turmaSelecionada = localStorage.getItem("turmaSelecionada");
+        if (turmaSelecionada) {
+            document.getElementById("opcoesTurma").value = turmaSelecionada;
+        }
+    });
 </script>
 </body>
 </html>

@@ -63,7 +63,7 @@ public class CoordenadorController {
     }
 
     @GetMapping("/mostrarTurma/{id}")
-    public String mostraTurmas(@PathVariable Long id, Model theModel){
+    public String mostraTurmas(@PathVariable Long id, @ModelAttribute("professor") ProfessorDTO professorDTO, Model theModel){
         List<AlunoDTO> alunosTurma = alunoService.findByTurma_Id(id);
         List<ProfessorDTO> professores_disponiveis = professorService.findAll();
         alunosTurma.forEach(System.out::println);
@@ -88,6 +88,8 @@ public class CoordenadorController {
 //    public String showProfessorForm(){
 //        return "coordenadores/atribuir-professor";
 //    }
+
+
 
     @PostMapping("/mostrarTurma/{id}")
     public String atribuir_professor(@PathVariable Long id, @ModelAttribute("professor") ProfessorDTO professor, Model theModel){
