@@ -66,7 +66,10 @@ https://pedromota.atlassian.net/jira/software/projects/SCRUM/boards/1
 
 ## Entrega 03
 
+# Registro de programacao em par
 ![image](https://github.com/user-attachments/assets/1394cdb9-56bc-47a7-890d-d5c4cd91d830)
+
+# Quadro do jira com historias implementadas na entrega
 ![image](https://github.com/user-attachments/assets/5039b8bb-05a6-4a65-9b2a-b539239ac7bd)
 
 ## Screencast do Prototipo 
