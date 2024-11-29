@@ -12,11 +12,13 @@ import br.com.rondonCompany.SDGE.service.TurmaService;
 import br.com.rondonCompany.SDGE.service.aluno.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -92,22 +94,27 @@ public class CoordenadorController {
 
 
     @PostMapping("/mostrarTurma/{id}")
-    public String atribuir_professor(@PathVariable Long id, @ModelAttribute("professor") ProfessorDTO professor, Model theModel){
-        Optional<Professor> professor_busca = professorService.buscaPorEmail(professor.email());
-        Optional<Turma> turma_buscas = turmaService.findById(id);
-        if(professor_busca.isPresent() && turma_buscas.isPresent()){
+    public ResponseEntity<String> atribuir_professor(
+            @RequestBody Map<String, String> payload,
+            @PathVariable Long id) {
+        String turma_payload = payload.get("turma");
+        Long turma_payload_asLong = Long.valueOf(turma_payload);
+        String professor_payload = payload.get("professor");
+
+        Optional<Professor> professor_busca = professorService.buscaPorEmail(professor_payload);
+        Optional<Turma> turma_buscas = turmaService.findById(turma_payload_asLong);
+
+        if (professor_busca.isPresent() && turma_buscas.isPresent()) {
             Professor wilmer = professor_busca.get();
             Turma turma = turma_buscas.get();
-            wilmer.getListaTurmas().add(turma);
-            turma.getListaProfessores().add(wilmer);
+            wilmer.adicionaProfessor_turma(turma);
             professorService.save(wilmer);
-            turmaService.save(turma);
-            return "redirect:/coordenadores/coordenador-main-page";
-        }
-        else{
-            return "coordenadores/mostrar-turma";
+            return ResponseEntity.ok("Professor inserido com sucesso!");
+        } else {
+            return ResponseEntity.badRequest().body("Erro ao inserir professor a uma turma!");
         }
     }
+
 
 
 

@@ -105,4 +105,10 @@ public class Professor {
     public void setListaDisciplinas(List<Disciplina> listaDisciplinas) {
         this.listaDisciplinas = listaDisciplinas;
     }
+
+
+    public void adicionaProfessor_turma(Turma turma){
+        this.getListaTurmas().add(turma);
+        turma.getListaProfessores().add(this);
+    }
 }

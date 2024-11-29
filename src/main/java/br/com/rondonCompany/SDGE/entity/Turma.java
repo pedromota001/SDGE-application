@@ -27,7 +27,7 @@ public class Turma {
             joinColumns = @JoinColumn(name = "id_turma"),
             inverseJoinColumns = @JoinColumn(name = "id_professor")
     )
-    private Set<Professor> listaProfessores = new HashSet<>();
+    private List<Professor> listaProfessores = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -69,11 +69,12 @@ public class Turma {
         this.listaAlunos = listaAlunos;
     }
 
-    public Set<Professor> getListaProfessores() {
+    public List<Professor> getListaProfessores() {
         return listaProfessores;
     }
 
-    public void setListaProfessores(Set<Professor> listaProfessores) {
+    public void setListaProfessores(List<Professor> listaProfessores) {
         this.listaProfessores = listaProfessores;
     }
+
 }
