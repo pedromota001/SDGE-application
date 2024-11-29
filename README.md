@@ -75,6 +75,7 @@ https://pedromota.atlassian.net/jira/software/projects/SCRUM/boards/1
 ## Screencast do Prototipo 
 https://drive.google.com/file/d/12q17zj7kp8XQ7mymucCytziC9RC6IC-O/view?usp=sharing
 
+# Diagrama de atividades das historias implementadas
 ![image](https://github.com/user-attachments/assets/ebdb295e-a1ec-4495-b9bd-474859d577ff)
 ![image](https://github.com/user-attachments/assets/42eb5aab-6b05-4cfc-be26-10bcd92d9767)
 
